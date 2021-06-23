@@ -2,7 +2,6 @@ package com.forgetemplatemod.templatemod.item;
 
 import com.forgetemplatemod.templatemod.TemplateModConfig;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;

@@ -1,8 +1,7 @@
 package com.forgetemplatemod.templatemod;
 
-import com.forgetemplatemod.templatemod.proxy.CommonProxy;
+import com.forgetemplatemod.templatemod.item.ModItems;
 import net.minecraft.block.Blocks;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -20,31 +19,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class ModMain {
-    private CommonProxy proxy;
-    private static Logger logger;
-
-/*
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-
-    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE)));
-
-    public ExampleMod() {
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-    }*/
-
-    /**
-     * must include package paths
-     */
-//    @SidedExecutor(serverSide = "com.forgetemplatemod.proxy.CommonProxy", clientSide = "com.forgetemplatemod.proxy.ClientProxy")
-//    public static CommonProxy proxy;
-
-//    public static final RegistryObject<AluminumSword> SWORD_TEST = ITEMS.register(
-//            "test_sword", () -> TileEntityType.Builder.of(, ALUMINUM_SWORD.get()).build(null)
-//    );
+    private Logger logger;
 
     @Autowired
-    public ModMain(CommonProxy proxy, Logger logger) {
-        this.proxy = proxy;
+    public ModMain(Logger logger) {
         this.logger = logger;
     }
 
@@ -84,7 +62,7 @@ public class ModMain {
         // Register the setup method for modloading
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.register(modEventBus);
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
