@@ -10,17 +10,16 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-// The value here should match an entry in the META-INF/mods.toml file
+/**
+ * Represents a class that is the starting point of the actual mod.
+ * This should have a class that is annotated with @Mod and be used to handle registrations of mod events.
+ */
 @Mod(TemplateModConfig.MOD_ID)
 public class TemplateMod
 {
     //spring DI container
-    private static ApplicationContext appContext = new AnnotationConfigApplicationContext(TemplateModConfig.class);
-    private ModMain modMain;
-//
-//    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TemplateModConfig.MOD_ID);
-//    public static final RegistryObject<Item> ALUMINUM_SWORD = RegistryObject.of(new ResourceLocation("templatemod:aluminum_sword"), ForgeRegistries.ITEMS);
-
+    private static final ApplicationContext appContext = new AnnotationConfigApplicationContext(TemplateModConfig.class);
+    private final ModMain modMain;
 
     public TemplateMod() {
         this.modMain = appContext.getBean(ModMain.class);
